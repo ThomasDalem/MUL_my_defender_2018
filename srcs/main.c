@@ -9,6 +9,16 @@
 #include <unistd.h>
 #include "my_defender.h"
 
+int close_window(int add)
+{
+    static int close = 0;
+
+    if (add == 1) {
+        close++;
+    }
+    return (close);
+}
+
 void print_hello(void)
 {
     write(1, "hello\n", 6);
@@ -17,41 +27,21 @@ void print_hello(void)
 int main(void)
 {
     sfRenderWindow *window = create_window(800, 600);
-    sfVector2f pos;
-    sfVector2f size;
-    sfEvent event;
-    button_t *button = malloc(sizeof(button_t));
-    sfVector2f click_pos;
+    scene_t *scene = create_scene_main_menu();
 
-    pos.x = 100;
-    pos.y = 100;
-    size.x = 180;
-    size.y = 50;
-    init_button(button, pos, size);
+    if (scene == NULL) {
+        sfRenderWindow_close(window);
+        sfRenderWindow_destroy(window);
+        return (84);
+    }
     while (sfRenderWindow_isOpen(window) == 1) {
-        sfRenderWindow_clear(window, sfBlack);
-        sfRenderWindow_drawRectangleShape(window, button->rect, NULL);
-        sfRenderWindow_display(window);
-        if (button_is_hovered(button, sfMouse_getPositionRenderWindow(window))) {
-            button->hover(button);
-        } else {
-            sfRectangleShape_setOutlineColor(button->rect, sfBlue);
-        }
-        while (sfRenderWindow_pollEvent(window, &event)) {
-            if (event.type == sfEvtClosed) {
-                sfRenderWindow_close(window);
-            }
-            if (event.type == sfEvtMouseButtonPressed) {
-                click_pos.x = event.mouseButton.x;
-                click_pos.y = event.mouseButton.y;
-                if (button_is_clicked(button, click_pos)) {
-                    button->callback();
-                }
-            }
+        handle_events(window, scene);
+        draw_scene(window, scene);
+        if (close_window(0) > 0) {
+            sfRenderWindow_close(window);
         }
     }
-    sfRenderWindow_close(window);
     sfRenderWindow_destroy(window);
-    button_destroy(button);
+    free_scene(scene);
     return (0);
 }
