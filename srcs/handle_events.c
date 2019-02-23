@@ -10,10 +10,15 @@
 void check_if_pressed_button(button_t **buttons, sfVector2f click_position)
 {
     int i = 0;
+    sfColor color;
 
+    color.a = 255;
+    color.r = 0;
+    color.g = 120;
+    color.b = 0;
     while (buttons[i] != NULL) {
         if (button_is_clicked(buttons[i], click_position) == 1) {
-            sfRectangleShape_setOutlineColor(buttons[i]->rect, sfBlue);
+            sfRectangleShape_setOutlineColor(buttons[i]->rect, color);
         }
         i++;
     }
