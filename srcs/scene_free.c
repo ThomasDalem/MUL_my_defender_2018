@@ -5,17 +5,30 @@
 ** Frees a scene and all the objects and buttons inside
 */
 #include <stdlib.h>
+#include <SFML/Graphics/Text.h>
+#include <SFML/Graphics/Font.h>
 #include "my_defender.h"
 
-void free_objects(game_object_t **objects)
+void free_objects(game_object_t *objects)
 {
-    int i = 0;
+    game_object_t *prev_node = objects;
 
-    while (objects[i] != NULL) {
-        free(objects[i]);
-        i++;
+    while (objects != NULL) {
+        sfSprite_destroy(objects->sprite);
+        sfTexture_destroy(objects->texture);
+        prev_node = objects;
+        objects = objects->next;
+        free(prev_node);
     }
-    free(objects);
+}
+
+void free_button(button_t *button)
+{
+    sfText_destroy(button->text);
+    sfFont_destroy(button->font);
+    sfTexture_destroy(button->texture);
+    sfRectangleShape_destroy(button->rect);
+    free(button);
 }
 
 void free_buttons(button_t **buttons)

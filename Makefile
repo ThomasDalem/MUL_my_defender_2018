@@ -30,8 +30,11 @@ SRCS		=	$(SRCSPATH)main.c		    \
 			$(SRCSPATH)draw_scene.c		    \
 			$(SRCSPATH)create_scene_main_menu.c \
 			$(SRCSPATH)buttons_callbacks.c	    \
-			$(SRCSPATH)button_free.c	    \
 			$(SRCSPATH)scene_free.c		    \
+			$(SRCSPATH)create_test_scene.c	    \
+			$(SRCSPATH)button_add_sprite.c	    \
+			$(SRCSPATH)follow_mouse.c	    \
+			$(SRCSPATH)create_object.c	    \
 			$(SRCSPATH)create_window.c
 
 NAME		=	my_defender

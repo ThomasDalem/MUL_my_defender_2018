@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include "my_defender.h"
 
-button_t *create_button_play(void)
+static button_t *create_button_play(void)
 {
     button_t *button = malloc(sizeof(button_t));
     sfVector2f button_size;
@@ -25,7 +25,7 @@ button_t *create_button_play(void)
     return (button);
 }
 
-button_t *create_button_quit(void)
+static button_t *create_button_quit(void)
 {
     button_t *button = malloc(sizeof(button_t));
     sfVector2f button_size;
@@ -44,7 +44,7 @@ button_t *create_button_quit(void)
     return (button);
 }
 
-button_t **create_buttons(void)
+static button_t **create_buttons(void)
 {
     button_t **buttons = malloc(sizeof(button_t *) * 3);
 
@@ -64,8 +64,7 @@ scene_t *create_scene_main_menu(void)
     if (scene == NULL) {
         return (NULL);
     }
-    scene->objects = malloc(sizeof(game_object_t *) * 1);
-    scene->objects[0] = NULL;
+    scene->objects = NULL;
     scene->buttons = create_buttons();
     return (scene);
 }
