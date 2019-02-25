@@ -47,6 +47,7 @@ void button_set_text(button_t *button, char *text)
 
 void init_button(button_t *button ,sfVector2f position, sfVector2f size)
 {
+    button->is_draggable = 0;
     button->rect = sfRectangleShape_create();
     button->texture = sfTexture_createFromFile("./assets/play.png", NULL);
     button->font = sfFont_createFromFile("./assets/Comfortaa-Light.ttf");

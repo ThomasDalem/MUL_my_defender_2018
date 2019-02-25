@@ -19,7 +19,7 @@ int close_window(int add)
     return (close);
 }
 
-void print_hello(void)
+void print_hello(scene_t *scene)
 {
     write(1, "hello\n", 6);
 }
@@ -27,8 +27,10 @@ void print_hello(void)
 int main(void)
 {
     sfRenderWindow *window = create_window(800, 600);
-    scene_t *scene = create_scene_main_menu();
+    scene_t *scene = create_scene_test();
 
+    scene->window = window;
+    scene->is_dragging = 0;
     if (scene == NULL) {
         sfRenderWindow_close(window);
         sfRenderWindow_destroy(window);
@@ -36,6 +38,7 @@ int main(void)
     }
     while (sfRenderWindow_isOpen(window) == 1) {
         handle_events(window, scene);
+        follow_mouse(scene);
         draw_scene(window, scene);
         if (close_window(0) > 0) {
             sfRenderWindow_close(window);
