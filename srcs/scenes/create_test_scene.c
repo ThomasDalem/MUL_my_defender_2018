@@ -16,6 +16,7 @@ static button_t *create_button_drag(void)
     if (button == NULL) {
         return (NULL);
     }
+    button->is_draggable = 1;
     button_size.x = 100;
     button_size.y = 100;
     button_position.x = 300;

@@ -16,12 +16,14 @@ static button_t *create_button_play(void)
     if (button == NULL) {
         return (NULL);
     }
+    button->is_draggable = 0;
     button_size.x = 200;
     button_size.y = 50;
     button_position.x = 300;
     button_position.y = 200;
     init_button(button, button_position, button_size);
     button_set_text(button, "PLAY");
+    button->callback = &play;
     return (button);
 }
 
@@ -34,6 +36,7 @@ static button_t *create_button_quit(void)
     if (button == NULL) {
         return (NULL);
     }
+    button->is_draggable = 0;
     button_size.x = 200;
     button_size.y = 50;
     button_position.x = 300;

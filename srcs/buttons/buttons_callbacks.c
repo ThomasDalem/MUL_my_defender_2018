@@ -6,6 +6,11 @@
 */
 #include "my_defender.h"
 
+void play(scene_t *scene)
+{
+    test_scene(scene->window);
+}
+
 void quit(scene_t *scene)
 {
     close_window(1);

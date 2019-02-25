@@ -53,11 +53,16 @@ void create_object(scene_t *scene);
 // Test functions
 void print_hello(scene_t *scene);
 
+// Scenes
+int main_menu(sfRenderWindow *window);
+int test_scene(sfRenderWindow *window);
+
 // Scenes creation
 scene_t *create_scene_test(void);
 scene_t *create_scene_main_menu(void);
 
 // Button callbacks
+void play(scene_t *scene);
 void quit(scene_t *scene);
 
 // Button states

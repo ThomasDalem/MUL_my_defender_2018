@@ -22,7 +22,9 @@ void draw_buttons(button_t **buttons, sfRenderWindow *window)
     while (buttons[i] != NULL) {
         sfRenderWindow_drawRectangleShape(window, buttons[i]->rect, NULL);
         sfRenderWindow_drawText(window, buttons[i]->text, NULL);
-        sfRenderWindow_drawSprite(window, buttons[i]->obj_sprite, NULL);
+        if (buttons[i]->is_draggable == 1) {
+           sfRenderWindow_drawSprite(window, buttons[i]->obj_sprite, NULL);
+        }
         i++;
     }
 }
