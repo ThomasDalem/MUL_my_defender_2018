@@ -23,18 +23,22 @@ STRLIBPATH	=	$(SRCSPATH)libs/strlib/
 
 INCLUDELIB	=	-L$(PRINTLIBPATH) -lmy
 
-SRCS		=	$(SRCSPATH)main.c		    \
-			$(SRCSPATH)button_init.c	    \
-			$(SRCSPATH)button_states.c	    \
-			$(SRCSPATH)handle_events.c	    \
-			$(SRCSPATH)draw_scene.c		    \
-			$(SRCSPATH)create_scene_main_menu.c \
-			$(SRCSPATH)buttons_callbacks.c	    \
-			$(SRCSPATH)scene_free.c		    \
-			$(SRCSPATH)create_test_scene.c	    \
-			$(SRCSPATH)button_add_sprite.c	    \
-			$(SRCSPATH)follow_mouse.c	    \
-			$(SRCSPATH)create_object.c	    \
+BUTTONSFILE	=	$(SRCSPATH)buttons/
+
+SCENEFILE	=	$(SRCSPATH)scenes/
+
+SRCS		=	$(SRCSPATH)main.c			    \
+			$(BUTTONSFILE)button_init.c		    \
+			$(BUTTONSFILE)button_states.c		    \
+			$(BUTTONSFILE)buttons_callbacks.c	    \
+			$(BUTTONSFILE)button_add_sprite.c	    \
+			$(SCENEFILE)create_scene_main_menu.c	    \
+			$(SCENEFILE)create_test_scene.c		    \
+			$(SCENEFILE)scene_free.c		    \
+			$(SCENEFILE)draw_scene.c		    \
+			$(SRCSPATH)handle_events.c		    \
+			$(SRCSPATH)follow_mouse.c		    \
+			$(SRCSPATH)create_object.c		    \
 			$(SRCSPATH)create_window.c
 
 NAME		=	my_defender

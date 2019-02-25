@@ -12,10 +12,14 @@ void check_if_pressed_button(scene_t *scene, sfVector2f click_position)
     int i = 0;
     sfColor color;
 
+    color.a = 255;
+    color.r = 0;
+    color.g = 125;
+    color.b = 0;
     while (scene->buttons[i] != NULL) {
         if (button_is_clicked(scene->buttons[i], click_position) == 1) {
             scene->buttons[i]->callback(scene);
-            sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, sfBlue);
+            sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, color);
         }
         i++;
     }
