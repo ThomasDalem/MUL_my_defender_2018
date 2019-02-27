@@ -29,10 +29,29 @@ void draw_buttons(button_t **buttons, sfRenderWindow *window)
     }
 }
 
+void draw_checkpoints(checkpoint_t *checkpoints, sfRenderWindow *window)
+{
+    while (checkpoints != NULL) {
+        sfRenderWindow_drawSprite(window, checkpoints->sprite, NULL);
+        checkpoints = checkpoints->next;
+    }
+}
+
+void draw_enemies(enemy_t *enemies, sfRenderWindow *window)
+{
+    while (enemies != NULL) {
+        sfRenderWindow_drawSprite(window, enemies->sprite, NULL);
+        enemies = enemies->next;
+    }
+}
+
 void draw_scene(sfRenderWindow *window, scene_t *scene)
 {
     sfRenderWindow_clear(window, sfBlack);
     draw_buttons(scene->buttons, window);
     draw_objects(scene->objects, window);
+    draw_checkpoints(scene->checkpoints, window);
+    draw_enemies(scene->enemies, window);
+    draw_turrets(scene->turret, window);
     sfRenderWindow_display(window);
 }

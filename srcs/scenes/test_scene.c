@@ -16,6 +16,7 @@ int test_scene(sfRenderWindow *window)
     while (sfRenderWindow_isOpen(window)) {
         handle_events(window, test_scene);
         follow_mouse(test_scene);
+        move_enemy(test_scene->enemies);
         draw_scene(window, test_scene);
         if (close_window(0) > 0) {
             sfRenderWindow_close(window);

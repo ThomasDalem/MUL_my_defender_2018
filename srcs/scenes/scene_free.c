@@ -28,6 +28,10 @@ void free_button(button_t *button)
     sfFont_destroy(button->font);
     sfTexture_destroy(button->texture);
     sfRectangleShape_destroy(button->rect);
+    if (button->is_draggable == 1) {
+        sfSprite_destroy(button->obj_sprite);
+        sfTexture_destroy(button->obj_texture);
+    }
     free(button);
 }
 
@@ -46,5 +50,6 @@ void free_scene(scene_t *scene)
 {
     free_objects(scene->objects);
     free_buttons(scene->buttons);
+    free_enemies(scene->enemies);
     free(scene);
 }

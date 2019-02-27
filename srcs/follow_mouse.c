@@ -9,7 +9,7 @@
 
 void change_is_dragging(scene_t *scene)
 {
-    create_object(scene);
+    create_turret(&scene->turret);
     if (scene->is_dragging == 1) {
         scene->is_dragging = 0;
     }
@@ -26,12 +26,12 @@ void follow_mouse(scene_t *scene)
     sfFloatRect sprite_bounds;
 
     if (scene->is_dragging == 1) {
-        sprite_bounds = sfSprite_getGlobalBounds(scene->objects->sprite);
-        middle_sprite.x = sprite_bounds.width / 2;
-        middle_sprite.y = sprite_bounds.height / 2;
+        sprite_bounds = sfSprite_getGlobalBounds(scene->turret->sprite);
+        middle_sprite.x = sprite_bounds.width / 4;
+        middle_sprite.y = sprite_bounds.height / 4;
         mouse_position = sfMouse_getPositionRenderWindow(scene->window);
-        sprite_position.x = mouse_position.x - mouse_position.x % 100;
-        sprite_position.y = mouse_position.y - mouse_position.y % 100;
-        sfSprite_setPosition(scene->objects->sprite, sprite_position);
+        sprite_position.x = mouse_position.x - mouse_position.x % 100 + middle_sprite.x;
+        sprite_position.y = mouse_position.y - mouse_position.y % 100 + middle_sprite.y;
+        sfSprite_setPosition(scene->turret->sprite, sprite_position);
     }
 }

@@ -61,6 +61,9 @@ void check_events_types(sfEvent *event, scene_t *scene)
     }
     else if (event->type == sfEvtMouseButtonReleased) {
         scene->is_dragging = 0;
+        if (scene->turret != NULL) {
+             scene->turret->display_range = 0;
+        }
         check_if_released_button(scene, click_position);
     }
 }

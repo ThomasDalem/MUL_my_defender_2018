@@ -48,5 +48,8 @@ scene_t *create_scene_test(void)
     }
     scene->objects = NULL;
     scene->buttons = create_buttons();
+    scene->checkpoints = create_checkpoints();
+    scene->enemies = create_enemies(scene->checkpoints);
+    scene->turret = NULL;
     return (scene);
 }

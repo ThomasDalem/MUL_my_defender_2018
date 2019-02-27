@@ -58,6 +58,6 @@ void init_button(button_t *button ,sfVector2f position, sfVector2f size)
     sfRectangleShape_setOutlineColor(button->rect, sfBlue);
     sfRectangleShape_setOutlineThickness(button->rect, 3);
     sfRectangleShape_setTexture(button->rect, button->texture, sfTrue);
-    button->callback = &print_hello;
+    button->callback = NULL;
     button->hover = &change_color;
 }
