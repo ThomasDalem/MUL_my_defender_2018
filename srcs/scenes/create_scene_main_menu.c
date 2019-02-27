@@ -69,5 +69,8 @@ scene_t *create_scene_main_menu(void)
     }
     scene->objects = NULL;
     scene->buttons = create_buttons();
+    scene->checkpoints = NULL;
+    scene->enemies = NULL;
+    scene->turret = NULL;
     return (scene);
 }

@@ -19,15 +19,11 @@ int close_window(int add)
     return (close);
 }
 
-void print_hello(scene_t *scene)
-{
-    write(1, "hello\n", 6);
-}
-
 int main(void)
 {
     sfRenderWindow *window = create_window(800, 600);
     
     main_menu(window);
+    sfRenderWindow_destroy(window);
     return (0);
 }

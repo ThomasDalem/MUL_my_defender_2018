@@ -11,11 +11,15 @@
 #include <SFML/Graphics/RectangleShape.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
+#include <SFML/System/Clock.h>
 
 typedef struct scene_s {
     int is_dragging;
     sfRenderWindow *window;
     struct button_s **buttons;
+    struct turret_s *turret;
+    struct enemy_s *enemies;
+    struct checkpoint_s *checkpoints;
     struct game_object_s *objects;
 } scene_t;
 
@@ -37,6 +41,32 @@ typedef struct game_object_s {
     struct game_object_s *next;
 } game_object_t;
 
+typedef struct checkpoint_s {
+    sfVector2f pos;
+    sfTexture *texture;
+    sfSprite *sprite;
+    struct checkpoint_s *next;
+} checkpoint_t;
+
+typedef struct turret_s {
+    int display_range;
+    int range;
+    sfCircleShape *range_circle;
+    sfTexture *texture;
+    sfSprite *sprite;
+    struct enemy_s *target;
+    struct turret_s *next;
+} turret_t;
+
+typedef struct enemy_s {
+    sfClock *clock;
+    sfTexture *texture;
+    sfSprite *sprite;
+    int health;
+    checkpoint_t *next_checkpoint;
+    struct enemy_s *next;
+} enemy_t;
+
 sfRenderWindow *create_window(int width, int height);
 void init_button(button_t *button ,sfVector2f position, sfVector2f size);
 void button_destroy(button_t *button);
@@ -50,9 +80,12 @@ void follow_mouse(scene_t *scene);
 void change_is_dragging(scene_t *scene);
 void create_object(scene_t *scene);
 void object_destroy(game_object_t *object, scene_t *scene);
-
-// Test functions
-void print_hello(scene_t *scene);
+checkpoint_t *create_checkpoints(void);
+enemy_t *create_enemies(checkpoint_t *checkpoints);
+void move_enemy(enemy_t *enemy);
+void free_enemies(enemy_t *enemies);
+void draw_turrets(turret_t *turret, sfRenderWindow *window);
+int create_turret(turret_t **turrets);
 
 // Scenes
 int main_menu(sfRenderWindow *window);

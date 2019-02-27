@@ -11,7 +11,7 @@ CFLAGS		=	-g3 -Wall -Wextra
 
 INCLUDES	=	-I./include/
 
-CSFMLINCLUDES	=	-lcsfml-graphics
+CSFMLINCLUDES	=	-lcsfml-graphics -lcsfml-system
 
 RM		=	rm -f
 
@@ -27,16 +27,26 @@ BUTTONSFILE	=	$(SRCSPATH)buttons/
 
 SCENEFILE	=	$(SRCSPATH)scenes/
 
+ENEMIESFILE	=	$(SRCSPATH)enemies/
+
+TURRETSFILE	=	$(SRCSPATH)turrets/
+
 SRCS		=	$(SRCSPATH)main.c			    \
 			$(BUTTONSFILE)button_init.c		    \
 			$(BUTTONSFILE)button_states.c		    \
 			$(BUTTONSFILE)buttons_callbacks.c	    \
 			$(BUTTONSFILE)button_add_sprite.c	    \
+			$(TURRETSFILE)draw_turrets.c		    \
+			$(TURRETSFILE)create_turrets.c		    \
 			$(SCENEFILE)create_scene_main_menu.c	    \
 			$(SCENEFILE)create_test_scene.c		    \
 			$(SCENEFILE)scene_free.c		    \
 			$(SCENEFILE)draw_scene.c		    \
+			$(SRCSPATH)create_checkpoints.c		    \
+			$(ENEMIESFILE)create_enemy.c		    \
+			$(ENEMIESFILE)enemies_free.c		    \
 			$(SRCSPATH)test_scene.c			    \
+			$(ENEMIESFILE)enemy_movement.c		    \
 			$(SRCSPATH)main_menu.c			    \
 			$(SRCSPATH)handle_events.c		    \
 			$(SRCSPATH)follow_mouse.c		    \
