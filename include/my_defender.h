@@ -49,6 +49,7 @@ void button_add_sprite(button_t *button, char const *filepath);
 void follow_mouse(scene_t *scene);
 void change_is_dragging(scene_t *scene);
 void create_object(scene_t *scene);
+void object_destroy(game_object_t *object, scene_t *scene);
 
 // Test functions
 void print_hello(scene_t *scene);
