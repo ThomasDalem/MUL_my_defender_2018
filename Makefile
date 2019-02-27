@@ -36,7 +36,7 @@ SRCS		=	$(SRCSPATH)main.c			    \
 			$(SCENEFILE)create_test_scene.c		    \
 			$(SCENEFILE)scene_free.c		    \
 			$(SCENEFILE)draw_scene.c		    \
-			$(SRCSPATH)test_scene.c			    \
+			$(SCENEFILE)test_scene.c		    \
 			$(SRCSPATH)main_menu.c			    \
 			$(SRCSPATH)handle_events.c		    \
 			$(SRCSPATH)follow_mouse.c		    \
