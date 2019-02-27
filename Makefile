@@ -46,7 +46,6 @@ SRCS		=	$(SRCSPATH)main.c			    \
 			$(SRCSPATH)create_checkpoints.c		    \
 			$(ENEMIESFILE)create_enemy.c		    \
 			$(ENEMIESFILE)enemies_free.c		    \
-			$(SRCSPATH)test_scene.c			    \
 			$(ENEMIESFILE)enemy_movement.c		    \
 			$(SRCSPATH)main_menu.c			    \
 			$(SRCSPATH)handle_events.c		    \

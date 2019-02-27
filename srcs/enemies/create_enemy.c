@@ -11,7 +11,7 @@
 void init_sprite(sfSprite **sprite, sfTexture **texture)
 {
     *sprite = sfSprite_create();
-    *texture = sfTexture_createFromFile("./assets/spike.png", NULL);
+    *texture = sfTexture_createFromFile("./assets/walk1.png", NULL);
     sfSprite_setTexture(*sprite, *texture, sfFalse);
 }
 
@@ -21,8 +21,8 @@ int create_enemy(enemy_t **enemy, checkpoint_t *checkpoints)
     sfVector2f scale;
     sfVector2f begin_pos;
 
-    scale.x = 0.2;
-    scale.y = 0.2;
+    scale.x = 1;
+    scale.y = 1;
     begin_pos.x = -50;
     begin_pos.y = 50;
     if (new_enemy == NULL) {
