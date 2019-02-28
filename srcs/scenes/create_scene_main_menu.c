@@ -19,7 +19,7 @@ static button_t *create_button_play(void)
     button->is_draggable = 0;
     button_size.x = 200;
     button_size.y = 50;
-    button_position.x = 300;
+    button_position.x = 650;
     button_position.y = 200;
     init_button(button, button_position, button_size);
     button_set_text(button, "PLAY");
@@ -39,8 +39,8 @@ static button_t *create_button_quit(void)
     button->is_draggable = 0;
     button_size.x = 200;
     button_size.y = 50;
-    button_position.x = 300;
-    button_position.y = 400;
+    button_position.x = 650;
+    button_position.y = 600;
     init_button(button, button_position, button_size);
     button_set_text(button, "QUIT");
     button->callback = &quit;

@@ -27,8 +27,8 @@ void button_add_sprite(button_t *button, char const *filepath)
     sfVector2f sprite_scale;
     sfVector2f sprite_position;
 
-    sprite_scale.x = 0.3;
-    sprite_scale.y = 0.3;
+    sprite_scale.x = 0.9;
+    sprite_scale.y = 0.9;
     button->is_draggable = 1;
     button->obj_texture = sfTexture_createFromFile(filepath, NULL);
     button->obj_sprite = sfSprite_create();

@@ -52,3 +52,4 @@ Mkfile.old
 dkms.conf
 .vscode/
 my_defender
+*vgcore*

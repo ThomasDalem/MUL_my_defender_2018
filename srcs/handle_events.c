@@ -5,6 +5,7 @@
 ** handle_events
 */
 #include <SFML/Graphics/RenderWindow.h>
+#include <SFML/Graphics/Text.h>
 #include "my_defender.h"
 
 void check_if_pressed_button(scene_t *scene, sfVector2f click_position)
@@ -20,6 +21,7 @@ void check_if_pressed_button(scene_t *scene, sfVector2f click_position)
         if (button_is_clicked(scene->buttons[i], click_position) == 1) {
             scene->buttons[i]->callback(scene);
             sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, color);
+            sfText_setColor(scene->buttons[i]->text, color);
         }
         i++;
     }
@@ -32,6 +34,7 @@ void check_if_released_button(scene_t *scene, sfVector2f click_position)
     while (scene->buttons[i] != NULL) {
         if (button_is_clicked(scene->buttons[i], click_position) == 1) {
             sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, sfGreen);
+            sfText_setColor(scene->buttons[i]->text, sfGreen);
         }
         i++;
     }
@@ -43,8 +46,10 @@ void check_button_hover(scene_t *scene, sfVector2i mouse_position)
 
     while (scene->buttons[i] != NULL) {
         sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, sfRed);
+            sfText_setColor(scene->buttons[i]->text, sfRed);
         if (button_is_hovered(scene->buttons[i], mouse_position) == 1) {
             sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, sfGreen);
+            sfText_setColor(scene->buttons[i]->text, sfGreen);
         }
         i++;
     }

@@ -16,6 +16,8 @@
 typedef struct scene_s {
     int is_dragging;
     sfRenderWindow *window;
+    sfTexture *background;
+    sfSprite *background_sprite;
     struct button_s **buttons;
     struct turret_s *turret;
     struct enemy_s *enemies;

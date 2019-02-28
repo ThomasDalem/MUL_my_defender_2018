@@ -47,7 +47,6 @@ void draw_enemies(enemy_t *enemies, sfRenderWindow *window)
 
 void draw_scene(sfRenderWindow *window, scene_t *scene)
 {
-    sfRenderWindow_clear(window, sfBlack);
     draw_buttons(scene->buttons, window);
     draw_objects(scene->objects, window);
     draw_checkpoints(scene->checkpoints, window);

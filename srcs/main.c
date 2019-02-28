@@ -21,7 +21,7 @@ int close_window(int add)
 
 int main(void)
 {
-    sfRenderWindow *window = create_window(800, 600);
+    sfRenderWindow *window = create_window(1500, 1000);
     
     main_menu(window);
     sfRenderWindow_destroy(window);

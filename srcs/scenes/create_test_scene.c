@@ -22,7 +22,7 @@ static button_t *create_button_drag(void)
     button_position.x = 300;
     button_position.y = 200;
     init_button(button, button_position, button_size);
-    button_add_sprite(button, "./assets/spike.png");
+    button_add_sprite(button, "./assets/turret1.png");
     return (button);
 }
 
