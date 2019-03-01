@@ -30,8 +30,8 @@ void follow_mouse(scene_t *scene)
         middle_sprite.x = sprite_bounds.width / 4;
         middle_sprite.y = sprite_bounds.height / 4;
         mouse_position = sfMouse_getPositionRenderWindow(scene->window);
-        sprite_position.x = mouse_position.x - mouse_position.x % 100 + middle_sprite.x - 23.0;
-        sprite_position.y = mouse_position.y - mouse_position.y % 100 + middle_sprite.y - 23.0;
+        sprite_position.x = mouse_position.x - mouse_position.x % 100 + middle_sprite.x - 25.0;
+        sprite_position.y = mouse_position.y - mouse_position.y % 100 + middle_sprite.y - 22.0;
         sfSprite_setPosition(scene->turret->sprite, sprite_position);
     }
 }

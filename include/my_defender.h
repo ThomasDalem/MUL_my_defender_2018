@@ -83,9 +83,14 @@ void change_is_dragging(scene_t *scene);
 void create_object(scene_t *scene);
 void object_destroy(game_object_t *object, scene_t *scene);
 checkpoint_t *create_checkpoints(void);
+
+//Enemies functions
 enemy_t *create_enemies(checkpoint_t *checkpoints);
 void move_enemy(enemy_t *enemy);
 void free_enemies(enemy_t *enemies);
+
+// Turrets functions
+void free_turrets(turret_t *turrets);
 void draw_turrets(turret_t *turret, sfRenderWindow *window);
 int create_turret(turret_t **turrets);
 

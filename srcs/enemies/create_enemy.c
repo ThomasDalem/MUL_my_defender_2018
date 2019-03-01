@@ -18,20 +18,16 @@ void init_sprite(sfSprite **sprite, sfTexture **texture)
 int create_enemy(enemy_t **enemy, checkpoint_t *checkpoints)
 {
     enemy_t *new_enemy = malloc(sizeof(enemy_t));
-    sfVector2f scale;
     sfVector2f begin_pos;
 
-    scale.x = 1;
-    scale.y = 1;
-    begin_pos.x = -50;
-    begin_pos.y = 50;
+    begin_pos.x = -100;
+    begin_pos.y = 400;
     if (new_enemy == NULL) {
         return (84);
     }
     new_enemy->health = 100;
     new_enemy->clock = sfClock_create();
     init_sprite(&new_enemy->sprite, &new_enemy->texture);
-    sfSprite_setScale(new_enemy->sprite, scale);
     sfSprite_setPosition(new_enemy->sprite, begin_pos);
     new_enemy->next_checkpoint = checkpoints;
     new_enemy->next = *enemy;

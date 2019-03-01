@@ -38,6 +38,7 @@ SRCS		=	$(SRCSPATH)main.c			    \
 			$(BUTTONSFILE)button_add_sprite.c	    \
 			$(TURRETSFILE)draw_turrets.c		    \
 			$(TURRETSFILE)create_turrets.c		    \
+			$(TURRETSFILE)free_turrets.c		    \
 			$(SCENEFILE)create_scene_main_menu.c	    \
 			$(SCENEFILE)create_test_scene.c		    \
 			$(SCENEFILE)scene_free.c		    \

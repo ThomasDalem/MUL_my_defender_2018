@@ -29,14 +29,20 @@ checkpoint_t *create_checkpoints(void)
     checkpoint_t *checkpoints = NULL;
     sfVector2f pos;
 
-    pos.x = 500;
-    pos.y = 300;
+    pos.x = 1200;
+    pos.y = 500;
     create_checkpoint(&checkpoints, pos);
-    pos.x = 300;
-    pos.y = 300;
+    pos.x = 700;
+    pos.y = 500;
     create_checkpoint(&checkpoints, pos);
-    pos.x = 300;
-    pos.y = 50;
+    pos.x = 700;
+    pos.y = 800;
+    create_checkpoint(&checkpoints, pos);
+    pos.x = 100;
+    pos.y = 800;
+    create_checkpoint(&checkpoints, pos);
+    pos.x = 100;
+    pos.y = 400;
     create_checkpoint(&checkpoints, pos);
     return (checkpoints);
 }

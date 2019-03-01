@@ -51,5 +51,6 @@ void free_scene(scene_t *scene)
     free_objects(scene->objects);
     free_buttons(scene->buttons);
     free_enemies(scene->enemies);
+    free_turrets(scene->turret);
     free(scene);
 }
