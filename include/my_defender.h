@@ -14,6 +14,7 @@
 #include <SFML/System/Clock.h>
 
 typedef struct scene_s {
+    int money;
     int is_dragging;
     sfRenderWindow *window;
     sfTexture *background;
@@ -51,11 +52,14 @@ typedef struct checkpoint_s {
 } checkpoint_t;
 
 typedef struct turret_s {
-    int display_range;
-    int range;
+    unsigned int display_range;
+    unsigned int range;
+    unsigned int is_dragged;
+    float fire_rate;
     sfCircleShape *range_circle;
     sfTexture *texture;
     sfSprite *sprite;
+    sfClock *clock;
     struct enemy_s *target;
     struct turret_s *next;
 } turret_t;
@@ -83,16 +87,20 @@ void change_is_dragging(scene_t *scene);
 void create_object(scene_t *scene);
 void object_destroy(game_object_t *object, scene_t *scene);
 checkpoint_t *create_checkpoints(void);
+void free_checkpoints(checkpoint_t *checkpoints);
 
 //Enemies functions
 enemy_t *create_enemies(checkpoint_t *checkpoints);
-void move_enemy(enemy_t *enemy);
+void move_enemies(enemy_t *enemies);
+void free_enemy(enemy_t *enemy);
 void free_enemies(enemy_t *enemies);
+void remove_dead_enemies(scene_t *scene);
 
 // Turrets functions
 void free_turrets(turret_t *turrets);
 void draw_turrets(turret_t *turret, sfRenderWindow *window);
 int create_turret(turret_t **turrets);
+int turrets_shooting(turret_t *turret, enemy_t *enemy);
 
 // Scenes
 int main_menu(sfRenderWindow *window);

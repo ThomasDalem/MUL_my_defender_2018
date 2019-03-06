@@ -39,6 +39,7 @@ SRCS		=	$(SRCSPATH)main.c			    \
 			$(TURRETSFILE)draw_turrets.c		    \
 			$(TURRETSFILE)create_turrets.c		    \
 			$(TURRETSFILE)free_turrets.c		    \
+			$(TURRETSFILE)turrets_shooting.c	    \
 			$(SCENEFILE)create_scene_main_menu.c	    \
 			$(SCENEFILE)create_test_scene.c		    \
 			$(SCENEFILE)scene_free.c		    \
@@ -48,10 +49,12 @@ SRCS		=	$(SRCSPATH)main.c			    \
 			$(ENEMIESFILE)create_enemy.c		    \
 			$(ENEMIESFILE)enemies_free.c		    \
 			$(ENEMIESFILE)enemy_movement.c		    \
+			$(ENEMIESFILE)remove_dead_enemies.c	    \
 			$(SRCSPATH)main_menu.c			    \
 			$(SRCSPATH)handle_events.c		    \
 			$(SRCSPATH)follow_mouse.c		    \
 			$(SRCSPATH)create_object.c		    \
+			$(SRCSPATH)free_checkpoints.c		    \
 			$(SRCSPATH)create_window.c
 
 NAME		=	my_defender

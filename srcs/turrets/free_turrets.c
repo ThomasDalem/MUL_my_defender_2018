@@ -13,6 +13,7 @@ void free_turret(turret_t *turret)
     sfSprite_destroy(turret->sprite);
     sfTexture_destroy(turret->texture);
     sfCircleShape_destroy(turret->range_circle);
+    sfClock_destroy(turret->clock);
     free(turret);
 }
 

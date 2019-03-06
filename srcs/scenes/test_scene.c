@@ -5,28 +5,28 @@
 ** test_scene
 */
 #include <SFML/Graphics/RenderWindow.h>
+#include <stdio.h>
 #include "my_defender.h"
 
 int test_scene(sfRenderWindow *window)
 {
-    scene_t *test_scene = create_scene_test();
-    sfTexture *back = sfTexture_createFromFile("./assets/background.jpg", NULL);
-    sfSprite *sprite = sfSprite_create();
+    scene_t *scene = create_scene_test();
+    scene->money = 500;
 
-    sfSprite_setTexture(sprite, back, sfFalse);
-    test_scene->is_dragging = 0;
-    test_scene->window = window;
+    scene->is_dragging = 0;
+    scene->window = window;
     while (sfRenderWindow_isOpen(window)) {
-        sfRenderWindow_clear(window, sfBlack);
-        handle_events(window, test_scene);
-        follow_mouse(test_scene);
-        move_enemy(test_scene->enemies);
-        sfRenderWindow_drawSprite(window, sprite, NULL);
-        draw_scene(window, test_scene);
-        if (close_window(0) > 0) {
+        handle_events(window, scene);
+        turrets_shooting(scene->turret, scene->enemies);
+        follow_mouse(scene);
+        move_enemies(scene->enemies);
+        draw_scene(window, scene);
+        scene->money += turrets_shooting(scene->turret, scene->enemies);
+        remove_dead_enemies(scene);
+        if (close_window(0) > 0)
             sfRenderWindow_close(window);
-        }
+        printf("money: %d\n", scene->money);
     }
-    free_scene(test_scene);
+    free_scene(scene);
     return (0);
 }

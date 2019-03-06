@@ -48,9 +48,14 @@ void free_buttons(button_t **buttons)
 
 void free_scene(scene_t *scene)
 {
+    if (scene->background_sprite != NULL && scene->background != NULL) {
+        sfSprite_destroy(scene->background_sprite);
+        sfTexture_destroy(scene->background);
+    }
     free_objects(scene->objects);
     free_buttons(scene->buttons);
     free_enemies(scene->enemies);
     free_turrets(scene->turret);
+    free_checkpoints(scene->checkpoints);
     free(scene);
 }

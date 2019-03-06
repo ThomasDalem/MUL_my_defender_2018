@@ -46,7 +46,7 @@ void check_button_hover(scene_t *scene, sfVector2i mouse_position)
 
     while (scene->buttons[i] != NULL) {
         sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, sfRed);
-            sfText_setColor(scene->buttons[i]->text, sfRed);
+        sfText_setColor(scene->buttons[i]->text, sfRed);
         if (button_is_hovered(scene->buttons[i], mouse_position) == 1) {
             sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, sfGreen);
             sfText_setColor(scene->buttons[i]->text, sfGreen);
@@ -61,13 +61,13 @@ void check_events_types(sfEvent *event, scene_t *scene)
 
     click_position.x = event->mouseButton.x;
     click_position.y = event->mouseButton.y;
-    if (event->type == sfEvtMouseButtonPressed) {
+    if (event->type == sfEvtMouseButtonPressed)
         check_if_pressed_button(scene, click_position);
-    }
     else if (event->type == sfEvtMouseButtonReleased) {
         scene->is_dragging = 0;
         if (scene->turret != NULL) {
-             scene->turret->display_range = 0;
+            scene->turret->display_range = 0;
+            scene->turret->is_dragged = 0;
         }
         check_if_released_button(scene, click_position);
     }
@@ -81,8 +81,7 @@ void handle_events(sfRenderWindow *window, scene_t *scene)
     while (sfRenderWindow_pollEvent(window, &event)) {
         check_button_hover(scene, mouse_pos);
         check_events_types(&event, scene);
-        if (event.type == sfEvtClosed) {
+        if (event.type == sfEvtClosed)
             sfRenderWindow_close(window);
-        }
     }
 }

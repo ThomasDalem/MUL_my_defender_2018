@@ -72,5 +72,6 @@ scene_t *create_scene_main_menu(void)
     scene->checkpoints = NULL;
     scene->enemies = NULL;
     scene->turret = NULL;
+    scene->background_sprite = NULL;
     return (scene);
 }
