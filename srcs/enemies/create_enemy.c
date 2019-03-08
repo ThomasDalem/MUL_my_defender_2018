@@ -15,6 +15,13 @@ void init_sprite(sfSprite **sprite, sfTexture **texture)
     sfSprite_setTexture(*sprite, *texture, sfFalse);
 }
 
+enemy_t *get_last_node(enemy_t *enemy)
+{
+    while (enemy->next != NULL)
+        enemy = enemy->next;
+    return (enemy);
+}
+
 int create_enemy(enemy_t **enemy, checkpoint_t *checkpoints, sfVector2f pos)
 {
     enemy_t *new_enemy = malloc(sizeof(enemy_t));
@@ -26,8 +33,11 @@ int create_enemy(enemy_t **enemy, checkpoint_t *checkpoints, sfVector2f pos)
     init_sprite(&new_enemy->sprite, &new_enemy->texture);
     sfSprite_setPosition(new_enemy->sprite, pos);
     new_enemy->next_checkpoint = checkpoints;
-    new_enemy->next = *enemy;
-    *enemy = new_enemy;
+    new_enemy->next = NULL;
+    if (*enemy == NULL)
+        *enemy = new_enemy;
+    else
+        get_last_node(*enemy)->next = new_enemy;
     return (0);
 }
 
@@ -36,7 +46,7 @@ enemy_t *create_enemies(checkpoint_t *checkpoints)
     enemy_t *enemies = NULL;
     sfVector2f begin_pos;
 
-    begin_pos.x = -600;
+    begin_pos.x = -100;
     begin_pos.y = 400;
     if (create_enemy(&enemies, checkpoints, begin_pos) == 84)
         return (NULL);
@@ -44,7 +54,7 @@ enemy_t *create_enemies(checkpoint_t *checkpoints)
     begin_pos.y = 400;
     if (create_enemy(&enemies, checkpoints, begin_pos) == 84)
         return (NULL);
-    begin_pos.x = -100;
+    begin_pos.x = -600;
     begin_pos.y = 400;
     if (create_enemy(&enemies, checkpoints, begin_pos) == 84)
         return (NULL);
