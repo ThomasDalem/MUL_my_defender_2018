@@ -55,6 +55,11 @@ SRCS		=	$(SRCSPATH)main.c			    \
 			$(SRCSPATH)follow_mouse.c		    \
 			$(SRCSPATH)create_object.c		    \
 			$(SRCSPATH)free_checkpoints.c		    \
+			$(SRCSPATH)init_castle.c		    \
+			$(SRCSPATH)draw_castle_health.c		    \
+			$(SRCSPATH)init_health_bar.c		    \
+			$(SRCSPATH)draw_health_bar.c		    \
+			$(SRCSPATH)move_health_bar.c		    \
 			$(SRCSPATH)create_window.c
 
 NAME		=	my_defender

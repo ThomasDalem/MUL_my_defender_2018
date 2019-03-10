@@ -22,6 +22,18 @@ enemy_t *get_last_node(enemy_t *enemy)
     return (enemy);
 }
 
+void init_enemy_health_bar(enemy_t *enemy)
+{
+    sfVector2f size;
+    sfVector2f pos;
+
+    size.x = 100;
+    size.y = 10;
+    pos.x = -100;
+    pos.y = -100;
+    enemy->health_bar = create_health_bar(size, pos);
+}
+
 int create_enemy(enemy_t **enemy, checkpoint_t *checkpoints, sfVector2f pos)
 {
     enemy_t *new_enemy = malloc(sizeof(enemy_t));
@@ -34,6 +46,7 @@ int create_enemy(enemy_t **enemy, checkpoint_t *checkpoints, sfVector2f pos)
     sfSprite_setPosition(new_enemy->sprite, pos);
     new_enemy->next_checkpoint = checkpoints;
     new_enemy->next = NULL;
+    init_enemy_health_bar(new_enemy);
     if (*enemy == NULL)
         *enemy = new_enemy;
     else

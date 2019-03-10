@@ -16,7 +16,7 @@ int main_menu(sfRenderWindow *window)
     while (sfRenderWindow_isOpen(window)) {
         handle_events(window, menu_scene);
         follow_mouse(menu_scene);
-        draw_scene(window, menu_scene);
+        draw_scene(window, menu_scene, NULL);
         if (close_window(0) > 0) {
             sfRenderWindow_close(window);
         }

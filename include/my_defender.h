@@ -44,6 +44,11 @@ typedef struct game_object_s {
     struct game_object_s *next;
 } game_object_t;
 
+typedef struct health_bar_s {
+    sfRectangleShape *red_bar;
+    sfRectangleShape *green_bar;
+} health_bar_t;
+
 typedef struct checkpoint_s {
     sfVector2f pos;
     sfTexture *texture;
@@ -69,25 +74,33 @@ typedef struct enemy_s {
     sfTexture *texture;
     sfSprite *sprite;
     int health;
+    health_bar_t *health_bar;
     checkpoint_t *next_checkpoint;
     struct enemy_s *next;
 } enemy_t;
+
+typedef struct castle_s {
+    int health;
+    health_bar_t *health_bar;
+} castle_t;
 
 sfRenderWindow *create_window(int width, int height);
 void init_button(button_t *button ,sfVector2f position, sfVector2f size);
 void button_destroy(button_t *button);
 void button_set_text(button_t *button, char *text);
 void handle_events(sfRenderWindow *window, scene_t *scene);
-void draw_scene(sfRenderWindow *window, scene_t *scene);
+void draw_scene(sfRenderWindow *window, scene_t *scene, castle_t *castle);
 int close_window(int add);
 void free_scene(scene_t *scene);
 void button_add_sprite(button_t *button, char const *filepath);
 void follow_mouse(scene_t *scene);
 void change_is_dragging(scene_t *scene);
 void create_object(scene_t *scene);
-void object_destroy(game_object_t *object, scene_t *scene);
 checkpoint_t *create_checkpoints(void);
 void free_checkpoints(checkpoint_t *checkpoints);
+health_bar_t *create_health_bar(sfVector2f size, sfVector2f pos);
+void draw_health(health_bar_t *health_bar, int health, sfRenderWindow *window);
+void move_health_bar(health_bar_t *health_bar, sfVector2f pos);
 
 //Enemies functions
 enemy_t *create_enemies(checkpoint_t *checkpoints);
@@ -117,5 +130,9 @@ void quit(scene_t *scene);
 // Button states
 int button_is_clicked(button_t *button, sfVector2f click_position);
 int button_is_hovered(button_t *button, sfVector2i mouse_position);
+
+// Castle functions
+castle_t *init_castle(void);
+void draw_castle_health(castle_t *castle, sfRenderWindow *window);
 
 #endif /* !MY_DEFENDER_H_ */

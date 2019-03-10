@@ -38,17 +38,24 @@ void draw_checkpoints(checkpoint_t *checkpoints, sfRenderWindow *window)
 
 void draw_enemies(enemy_t *enemies, sfRenderWindow *window)
 {
+    sfVector2f pos;
+
     while (enemies != NULL) {
+        pos = sfSprite_getPosition(enemies->sprite);
+        move_health_bar(enemies->health_bar, pos);        
         sfRenderWindow_drawSprite(window, enemies->sprite, NULL);
+        draw_health(enemies->health_bar, enemies->health, window);
         enemies = enemies->next;
     }
 }
 
-void draw_scene(sfRenderWindow *window, scene_t *scene)
+void draw_scene(sfRenderWindow *window, scene_t *scene, castle_t *castle)
 {
     sfRenderWindow_clear(window, sfBlack);
     if (scene->background_sprite != NULL)
         sfRenderWindow_drawSprite(window, scene->background_sprite, NULL);
+    if (castle != NULL)
+        draw_castle_health(castle, window);
     draw_buttons(scene->buttons, window);
     draw_objects(scene->objects, window);
     draw_checkpoints(scene->checkpoints, window);
