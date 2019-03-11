@@ -14,7 +14,7 @@
 #include <SFML/System/Clock.h>
 
 typedef struct scene_s {
-    int money;
+    unsigned int money;
     int is_dragging;
     sfRenderWindow *window;
     sfTexture *background;
@@ -60,6 +60,8 @@ typedef struct turret_s {
     unsigned int display_range;
     unsigned int range;
     unsigned int is_dragged;
+    unsigned int price;
+    unsigned int damage;
     float fire_rate;
     sfCircleShape *range_circle;
     sfTexture *texture;
@@ -80,7 +82,7 @@ typedef struct enemy_s {
 } enemy_t;
 
 typedef struct castle_s {
-    int health;
+    unsigned int health;
     health_bar_t *health_bar;
 } castle_t;
 
@@ -101,6 +103,7 @@ void free_checkpoints(checkpoint_t *checkpoints);
 health_bar_t *create_health_bar(sfVector2f size, sfVector2f pos);
 void draw_health(health_bar_t *health_bar, int health, sfRenderWindow *window);
 void move_health_bar(health_bar_t *health_bar, sfVector2f pos);
+void assign_turret_to_button(button_t *button, int id);
 
 //Enemies functions
 enemy_t *create_enemies(checkpoint_t *checkpoints);
@@ -112,8 +115,11 @@ void remove_dead_enemies(scene_t *scene);
 // Turrets functions
 void free_turrets(turret_t *turrets);
 void draw_turrets(turret_t *turret, sfRenderWindow *window);
-int create_turret(turret_t **turrets);
+int create_turret1(turret_t **turrets);
+int create_turret2(turret_t **turrets);
 int turrets_shooting(turret_t *turret, enemy_t *enemy);
+void add_turret1(scene_t *scene);
+void add_turret2(scene_t *scene);
 
 // Scenes
 int main_menu(sfRenderWindow *window);

@@ -10,48 +10,40 @@
 
 void check_if_pressed_button(scene_t *scene, sfVector2f click_position)
 {
-    int i = 0;
     sfColor color;
 
     color.a = 255;
     color.r = 0;
     color.g = 125;
     color.b = 0;
-    while (scene->buttons[i] != NULL) {
+    for (int i = 0; scene->buttons[i] != NULL; i++) {
         if (button_is_clicked(scene->buttons[i], click_position) == 1) {
             scene->buttons[i]->callback(scene);
             sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, color);
             sfText_setColor(scene->buttons[i]->text, color);
         }
-        i++;
     }
 }
 
 void check_if_released_button(scene_t *scene, sfVector2f click_position)
 {
-    int i = 0;
-
-    while (scene->buttons[i] != NULL) {
+    for (int i = 0; scene->buttons[i] != NULL; i++) {
         if (button_is_clicked(scene->buttons[i], click_position) == 1) {
             sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, sfGreen);
             sfText_setColor(scene->buttons[i]->text, sfGreen);
         }
-        i++;
     }
 }
 
 void check_button_hover(scene_t *scene, sfVector2i mouse_position)
 {
-    int i = 0;
-
-    while (scene->buttons[i] != NULL) {
+    for (int i = 0; scene->buttons[i] != NULL; i++) {
         sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, sfRed);
         sfText_setColor(scene->buttons[i]->text, sfRed);
         if (button_is_hovered(scene->buttons[i], mouse_position) == 1) {
             sfRectangleShape_setOutlineColor(scene->buttons[i]->rect, sfGreen);
             sfText_setColor(scene->buttons[i]->text, sfGreen);
         }
-        i++;
     }
 }
 

@@ -7,15 +7,6 @@
 #include <SFML/Graphics/RenderWindow.h>
 #include "my_defender.h"
 
-void change_is_dragging(scene_t *scene)
-{
-    create_turret(&scene->turret);
-    if (scene->is_dragging == 1)
-        scene->is_dragging = 0;
-    else if (scene->is_dragging == 0)
-        scene->is_dragging = 1;
-}
-
 void follow_mouse(scene_t *scene)
 {
     sfVector2i mouse_position;

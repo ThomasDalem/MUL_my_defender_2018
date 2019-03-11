@@ -7,33 +7,40 @@
 #include <stdlib.h>
 #include "my_defender.h"
 
-static button_t *create_button_drag(void)
+button_t *create_button_drag(sfVector2f pos, int turret_id)
 {
     button_t *button = malloc(sizeof(button_t));
     sfVector2f button_size;
-    sfVector2f button_position;
+    //sfVector2f button_position;
 
     if (button == NULL)
         return (NULL);
     button->is_draggable = 1;
     button_size.x = 100;
     button_size.y = 100;
-    button_position.x = 300;
-    button_position.y = 200;
-    init_button(button, button_position, button_size);
-    button_add_sprite(button, "./assets/turret1.png");
+    //button_position.x = 100;
+    //button_position.y = 100;
+    init_button(button, pos, button_size);
+    assign_turret_to_button(button, turret_id);
     return (button);
 }
 
-static button_t **create_buttons(void)
+button_t **create_buttons(void)
 {
-    button_t **buttons = malloc(sizeof(button_t *) * 2);
+    button_t **buttons = malloc(sizeof(button_t *) * 3);
+    sfVector2f pos;
 
     if (buttons == NULL)
         return (NULL);
-    buttons[0] = create_button_drag();
-    buttons[0]->callback = &change_is_dragging;
-    buttons[1] = NULL;
+    pos.x = 100;
+    pos.y = 100;
+    buttons[0] = create_button_drag(pos, 1);
+    buttons[0]->callback = &add_turret1;
+    pos.x = 300;
+    pos.y = 100;
+    buttons[1] = create_button_drag(pos, 2);
+    buttons[1]->callback = &add_turret2;
+    buttons[2] = NULL;
     return (buttons);
 }
 

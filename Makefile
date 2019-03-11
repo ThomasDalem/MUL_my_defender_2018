@@ -36,6 +36,8 @@ SRCS		=	$(SRCSPATH)main.c			    \
 			$(BUTTONSFILE)button_states.c		    \
 			$(BUTTONSFILE)buttons_callbacks.c	    \
 			$(BUTTONSFILE)button_add_sprite.c	    \
+			$(BUTTONSFILE)assign_button_turret.c	    \
+			$(BUTTONSFILE)drag_buttons_callbacks.c	    \
 			$(TURRETSFILE)draw_turrets.c		    \
 			$(TURRETSFILE)create_turrets.c		    \
 			$(TURRETSFILE)free_turrets.c		    \

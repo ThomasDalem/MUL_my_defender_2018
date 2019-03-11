@@ -53,7 +53,7 @@ int turrets_shooting(turret_t *turret, enemy_t *enemy)
         turret->target = get_enemy_in_range(turret, enemy);
         if (can_shoot(turret)) {
             sfClock_restart(turret->clock);
-            turret->target->health -= 10;
+            turret->target->health -= turret->damage;
             money_earned += 100;
         }
         turret = turret->next;
