@@ -28,6 +28,7 @@ typedef struct scene_s {
 
 typedef struct money_s {
     unsigned int money;
+    char *str;
     sfFont *font;
     sfText *text;
 } money_t;
@@ -106,18 +107,25 @@ void change_is_dragging(scene_t *scene);
 void create_object(scene_t *scene);
 checkpoint_t *create_checkpoints(void);
 void free_checkpoints(checkpoint_t *checkpoints);
+
+// Health bar functions
 health_bar_t *create_health_bar(sfVector2f size, sfVector2f pos);
 void draw_health(health_bar_t *health_bar, int health, sfRenderWindow *window);
-void move_health_bar(health_bar_t *health_bar, sfVector2f pos);
 void assign_turret_to_button(button_t *button, int id);
-money_t *init_money(int beginning_money);
+void move_health_bar(health_bar_t *health_bar, sfVector2f pos);
+void free_health_bar(health_bar_t *health_bar);
 
-//Enemies functions
+// Money functions
+void display_money(money_t *money, sfRenderWindow *window);
+money_t *init_money(int beginning_money);
+void free_money(money_t *money);
+
+// Enemies functions
 enemy_t *create_enemies(checkpoint_t *checkpoints);
 void move_enemies(enemy_t *enemies);
+void remove_dead_enemies(scene_t *scene);
 void free_enemy(enemy_t *enemy);
 void free_enemies(enemy_t *enemies);
-void remove_dead_enemies(scene_t *scene);
 
 // Turrets functions
 void free_turrets(turret_t *turrets);

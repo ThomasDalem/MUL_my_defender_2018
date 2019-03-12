@@ -24,7 +24,7 @@ int set_y_direction(int checkpoint_y, int enemy_pos_y)
         return (-1);
     return (0);
 }
-
+// TODO
 void move_enemy(enemy_t *enemy)
 {
     sfTime clock_time = sfClock_getElapsedTime(enemy->clock);

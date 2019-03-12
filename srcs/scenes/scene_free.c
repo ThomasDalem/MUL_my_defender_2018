@@ -57,5 +57,6 @@ void free_scene(scene_t *scene)
     free_enemies(scene->enemies);
     free_turrets(scene->turret);
     free_checkpoints(scene->checkpoints);
+    free_money(scene->money);
     free(scene);
 }

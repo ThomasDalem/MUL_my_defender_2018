@@ -31,6 +31,10 @@ ENEMIESFILE	=	$(SRCSPATH)enemies/
 
 TURRETSFILE	=	$(SRCSPATH)turrets/
 
+MONEYPATH	=	$(SRCSPATH)money/
+
+HEALTHPATH	=	$(SRCSPATH)healthbar/
+
 SRCS		=	$(SRCSPATH)main.c			    \
 			$(BUTTONSFILE)button_init.c		    \
 			$(BUTTONSFILE)button_states.c		    \
@@ -58,11 +62,19 @@ SRCS		=	$(SRCSPATH)main.c			    \
 			$(SRCSPATH)create_object.c		    \
 			$(SRCSPATH)free_checkpoints.c		    \
 			$(SRCSPATH)init_castle.c		    \
-			$(SRCSPATH)draw_castle_health.c		    \
-			$(SRCSPATH)init_health_bar.c		    \
-			$(SRCSPATH)draw_health_bar.c		    \
-			$(SRCSPATH)move_health_bar.c		    \
-			$(SRCSPATH)init_money.c			    \
+			$(HEALTHPATH)draw_castle_health.c	    \
+			$(HEALTHPATH)init_health_bar.c		    \
+			$(HEALTHPATH)draw_health_bar.c		    \
+			$(HEALTHPATH)move_health_bar.c		    \
+			$(HEALTHPATH)free_healthbar.c		    \
+			$(MONEYPATH)init_money.c		    \
+			$(MONEYPATH)display_money.c		    \
+			$(MONEYPATH)free_money.c		    \
+			$(STRLIBPATH)my_getnbr.c		    \
+			$(STRLIBPATH)my_strlen.c		    \
+			$(STRLIBPATH)my_strcat.c		    \
+			$(STRLIBPATH)my_int_to_str.c		    \
+			$(STRLIBPATH)my_revstr.c		    \
 			$(SRCSPATH)create_window.c
 
 NAME		=	my_defender

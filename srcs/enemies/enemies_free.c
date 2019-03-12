@@ -12,6 +12,7 @@ void free_enemy(enemy_t *enemy)
     sfClock_destroy(enemy->clock);
     sfSprite_destroy(enemy->sprite);
     sfTexture_destroy(enemy->texture);
+    free_health_bar(enemy->health_bar);
     free(enemy);
 }
 

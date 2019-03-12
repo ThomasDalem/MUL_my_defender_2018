@@ -5,8 +5,14 @@
 ** test_scene
 */
 #include <SFML/Graphics/RenderWindow.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include "my_defender.h"
+
+void free_castle(castle_t *castle)
+{
+    free_health_bar(castle->health_bar);
+    free(castle);
+}
 
 int test_scene(sfRenderWindow *window)
 {
@@ -25,8 +31,8 @@ int test_scene(sfRenderWindow *window)
         remove_dead_enemies(scene);
         if (close_window(0) > 0)
             sfRenderWindow_close(window);
-        printf("money: %d\n", scene->money->money); // TOREMOVE
     }
     free_scene(scene);
+    free_castle(castle);
     return (0);
 }
