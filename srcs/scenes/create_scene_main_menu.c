@@ -73,5 +73,6 @@ scene_t *create_scene_main_menu(void)
     scene->enemies = NULL;
     scene->turret = NULL;
     scene->background_sprite = NULL;
+    scene->money = NULL;
     return (scene);
 }

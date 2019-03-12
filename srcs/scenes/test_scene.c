@@ -12,7 +12,6 @@ int test_scene(sfRenderWindow *window)
 {
     scene_t *scene = create_scene_test();
     castle_t *castle = init_castle();
-    scene->money = 1000;
 
     scene->is_dragging = 0;
     scene->window = window;
@@ -22,11 +21,11 @@ int test_scene(sfRenderWindow *window)
         follow_mouse(scene);
         move_enemies(scene->enemies);
         draw_scene(window, scene, castle);
-        scene->money += turrets_shooting(scene->turret, scene->enemies);
+        scene->money->money += turrets_shooting(scene->turret, scene->enemies);
         remove_dead_enemies(scene);
         if (close_window(0) > 0)
             sfRenderWindow_close(window);
-        printf("money: %d\n", scene->money); // TOREMOVE
+        printf("money: %d\n", scene->money->money); // TOREMOVE
     }
     free_scene(scene);
     return (0);

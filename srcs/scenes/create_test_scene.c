@@ -11,15 +11,12 @@ button_t *create_button_drag(sfVector2f pos, int turret_id)
 {
     button_t *button = malloc(sizeof(button_t));
     sfVector2f button_size;
-    //sfVector2f button_position;
 
     if (button == NULL)
         return (NULL);
     button->is_draggable = 1;
     button_size.x = 100;
     button_size.y = 100;
-    //button_position.x = 100;
-    //button_position.y = 100;
     init_button(button, pos, button_size);
     assign_turret_to_button(button, turret_id);
     return (button);
@@ -58,6 +55,7 @@ scene_t *create_scene_test(void)
     scene->turret = NULL;
     scene->background = sfTexture_createFromFile(background_path, NULL);
     scene->background_sprite = sfSprite_create();
+    scene->money = init_money(1000);
     sfSprite_setTexture(scene->background_sprite, scene->background, sfFalse);
     return (scene);
 }

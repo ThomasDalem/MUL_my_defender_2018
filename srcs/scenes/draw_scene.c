@@ -61,5 +61,7 @@ void draw_scene(sfRenderWindow *window, scene_t *scene, castle_t *castle)
     draw_checkpoints(scene->checkpoints, window);
     draw_enemies(scene->enemies, window);
     draw_turrets(scene->turret, window);
+    if (scene->money != NULL)
+        sfRenderWindow_drawText(window, scene->money->text, NULL);
     sfRenderWindow_display(window);
 }

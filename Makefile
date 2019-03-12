@@ -62,6 +62,7 @@ SRCS		=	$(SRCSPATH)main.c			    \
 			$(SRCSPATH)init_health_bar.c		    \
 			$(SRCSPATH)draw_health_bar.c		    \
 			$(SRCSPATH)move_health_bar.c		    \
+			$(SRCSPATH)init_money.c			    \
 			$(SRCSPATH)create_window.c
 
 NAME		=	my_defender

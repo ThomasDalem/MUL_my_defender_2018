@@ -69,7 +69,7 @@ int create_turret2(turret_t **turrets)
     new_turret->is_dragged = 1;
     new_turret->fire_rate = 2;
     new_turret->damage = 25;
-    new_turret->clock = sfClock_create();
+    new_turret->clock = sfClock_create();    
     new_turret->target = NULL;
     new_turret->next = *turrets;
     *turrets = new_turret;

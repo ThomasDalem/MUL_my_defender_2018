@@ -14,7 +14,7 @@
 #include <SFML/System/Clock.h>
 
 typedef struct scene_s {
-    unsigned int money;
+    struct money_s *money;
     int is_dragging;
     sfRenderWindow *window;
     sfTexture *background;
@@ -25,6 +25,12 @@ typedef struct scene_s {
     struct checkpoint_s *checkpoints;
     struct game_object_s *objects;
 } scene_t;
+
+typedef struct money_s {
+    unsigned int money;
+    sfFont *font;
+    sfText *text;
+} money_t;
 
 typedef struct button_s {
     int is_draggable;
@@ -104,6 +110,7 @@ health_bar_t *create_health_bar(sfVector2f size, sfVector2f pos);
 void draw_health(health_bar_t *health_bar, int health, sfRenderWindow *window);
 void move_health_bar(health_bar_t *health_bar, sfVector2f pos);
 void assign_turret_to_button(button_t *button, int id);
+money_t *init_money(int beginning_money);
 
 //Enemies functions
 enemy_t *create_enemies(checkpoint_t *checkpoints);
